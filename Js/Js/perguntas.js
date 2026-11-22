@@ -1,110 +1,128 @@
-export const perguntas = {
-    inicio: {
-        titulo: "O começo da jornada",
-        historia: "Você faz parte de um grupo de estudantes que precisa investigar como a inteligência artificial pode afetar a escola. Qual caminho deseja seguir?",
+export const perguntas = [
+    {
+        tipo: "PRIMEIRA SITUAÇÃO",
+        pergunta: "A água começou a subir nas ruas do bairro. Qual deve ser sua primeira atitude?",
         opcoes: [
-            { texto: "A - Usar IA em um trabalho escolar", destino: "A1" },
-            { texto: "B - Investigar um áudio suspeito", destino: "B1" }
+            {
+                texto: "Ir para um local alto e seguro e avisar as equipes de emergência.",
+                correta: true,
+                explicacao: "Muito bem! A prioridade é proteger as pessoas."
+            },
+            {
+                texto: "Entrar na água para tentar atravessar a rua.",
+                correta: false,
+                explicacao: "Nunca entre na água da enchente."
+            },
+            {
+                texto: "Ficar perto do rio observando o nível da água.",
+                correta: false,
+                explicacao: "Afaste-se de rios e áreas alagadas."
+            }
         ]
     },
-
-    A1: {
-        titulo: "Uma nova ferramenta",
-        historia: "Seu grupo decide utilizar uma inteligência artificial para ajudar em um trabalho escolar. Você acredita que ela pode facilitar a pesquisa.",
+    {
+        tipo: "SEGURANÇA",
+        pergunta: "Um morador afirma que consegue atravessar uma rua alagada porque a água parece rasa. O que você responde?",
         opcoes: [
-            { texto: "Usar a IA como apoio", destino: "A2" },
-            { texto: "Deixar a IA fazer todo o trabalho", destino: "A2" }
+            {
+                texto: "Pode atravessar, desde que vá devagar.",
+                correta: false,
+                explicacao: "A água pode esconder buracos e ter correnteza."
+            },
+            {
+                texto: "Não atravesse. Procure uma rota segura.",
+                correta: true,
+                explicacao: "Correto! Áreas alagadas são perigosas."
+            },
+            {
+                texto: "Atravesse somente se estiver acompanhado.",
+                correta: false,
+                explicacao: "Estar acompanhado não torna a travessia segura."
+            }
         ]
     },
-
-    A2: {
-        titulo: "A pesquisa",
-        historia: "A ferramenta apresenta várias informações. Algumas parecem corretas, mas você não sabe se todas são verdadeiras.",
+    {
+        tipo: "ORGANIZAÇÃO DO RESGATE",
+        pergunta: "Uma pessoa está isolada pela água e pede ajuda. Qual é a atitude mais segura?",
         opcoes: [
-            { texto: "Conferir as informações em fontes confiáveis", destino: "A3" },
-            { texto: "Aceitar as informações sem verificar", destino: "A3" }
+            {
+                texto: "Entrar na água para tentar alcançá-la.",
+                correta: false,
+                explicacao: "Você também pode ficar em perigo."
+            },
+            {
+                texto: "Pedir que a pessoa nade até você.",
+                correta: false,
+                explicacao: "Não incentive ninguém a entrar na correnteza."
+            },
+            {
+                texto: "Informar a localização às equipes de emergência.",
+                correta: true,
+                explicacao: "Muito bem! O resgate deve ser feito por profissionais."
+            }
         ]
     },
-
-    A3: {
-        titulo: "O trabalho em equipe",
-        historia: "Um colega diz que não é necessário participar, pois a IA pode fazer todo o trabalho.",
+    {
+        tipo: "TRABALHO EM EQUIPE",
+        pergunta: "Como ajudar a organizar os moradores que precisam deixar suas casas?",
         opcoes: [
-            { texto: "Explicar que a IA deve ser usada com responsabilidade", destino: "A4" },
-            { texto: "Deixar a IA fazer tudo", destino: "A4" }
+            {
+                texto: "Compartilhar informações confirmadas e orientar todos.",
+                correta: true,
+                explicacao: "Ótima decisão! Informações confiáveis ajudam a comunidade."
+            },
+            {
+                texto: "Espalhar mensagens sem verificar se são verdadeiras.",
+                correta: false,
+                explicacao: "Informações falsas podem causar confusão."
+            },
+            {
+                texto: "Bloquear as ruas para reunir curiosos.",
+                correta: false,
+                explicacao: "As rotas devem ficar livres para as equipes."
+            }
         ]
     },
-
-    A4: {
-        titulo: "A apresentação",
-        historia: "Chegou o momento de apresentar o trabalho. O professor pergunta como vocês utilizaram a inteligência artificial.",
+    {
+        tipo: "APOIO AOS MORADORES",
+        pergunta: "Uma família precisa sair de casa e pergunta o que deve levar. O que você recomenda?",
         opcoes: [
-            { texto: "Explicar como a ferramenta foi usada", destino: "A5" },
-            { texto: "Esconder o uso da inteligência artificial", destino: "A5" }
+            {
+                texto: "Voltar para buscar todos os objetos da casa.",
+                correta: false,
+                explicacao: "Não arrisque a segurança para recuperar objetos."
+            },
+            {
+                texto: "Se for seguro, levar documentos, telefone e medicamentos necessários.",
+                correta: true,
+                explicacao: "Correto! A segurança vem primeiro."
+            },
+            {
+                texto: "Esperar a água baixar dentro de uma área de risco.",
+                correta: false,
+                explicacao: "Procure um local seguro e siga as orientações oficiais."
+            }
         ]
     },
-
-    A5: {
-        titulo: "A reflexão",
-        historia: "O grupo percebe que a inteligência artificial pode ajudar muito, mas precisa ser utilizada com consciência e senso crítico.",
+    {
+        tipo: "MISSÃO FINAL",
+        pergunta: "Você precisa ajudar a equipe a identificar moradores que precisam de apoio especial. Como agir?",
         opcoes: [
-            { texto: "Finalizar a história", destino: "fimA" }
+            {
+                texto: "Tentar realizar todos os resgates sozinho.",
+                correta: false,
+                explicacao: "Não tente realizar resgates perigosos por conta própria."
+            },
+            {
+                texto: "Ignorar os moradores que precisam de ajuda.",
+                correta: false,
+                explicacao: "Todos devem receber atenção."
+            },
+            {
+                texto: "Informar às equipes quais moradores precisam de apoio.",
+                correta: true,
+                explicacao: "Excelente! A comunicação ajuda a organizar o atendimento."
+            }
         ]
-    },
-
-    B1: {
-        titulo: "O áudio misterioso",
-        historia: "Um áudio começa a circular nos grupos da escola. Nele, uma voz supostamente da direção anuncia uma mudança importante.",
-        opcoes: [
-            { texto: "Investigar a origem do áudio", destino: "B2" },
-            { texto: "Compartilhar o áudio imediatamente", destino: "B2" }
-        ]
-    },
-
-    B2: {
-        titulo: "A dúvida",
-        historia: "Alguns estudantes acreditam que o áudio é verdadeiro. Outros dizem que pode ter sido criado por inteligência artificial.",
-        opcoes: [
-            { texto: "Procurar um comunicado oficial da escola", destino: "B3" },
-            { texto: "Acreditar apenas nos colegas", destino: "B3" }
-        ]
-    },
-
-    B3: {
-        titulo: "A investigação",
-        historia: "Você descobre que existem ferramentas capazes de criar áudios falsos muito convincentes.",
-        opcoes: [
-            { texto: "Pesquisar sobre áudios manipulados por IA", destino: "B4" },
-            { texto: "Ignorar as informações encontradas", destino: "B4" }
-        ]
-    },
-
-    B4: {
-        titulo: "A descoberta",
-        historia: "A direção informa que não fez o anúncio. O áudio não era uma comunicação oficial.",
-        opcoes: [
-            { texto: "Avisar os colegas para não espalharem o áudio", destino: "B5" },
-            { texto: "Continuar compartilhando o áudio", destino: "B5" }
-        ]
-    },
-
-    B5: {
-        titulo: "A conclusão",
-        historia: "Você percebe que é importante verificar a origem das informações antes de acreditar ou compartilhar qualquer conteúdo.",
-        opcoes: [
-            { texto: "Finalizar a história", destino: "fimB" }
-        ]
-    },
-
-    fimA: {
-        titulo: "FIM DA HISTÓRIA!",
-        historia: "Você concluiu o caminho da inteligência artificial na educação. A tecnologia pode ser uma grande aliada quando usada com responsabilidade.",
-        opcoes: []
-    },
-
-    fimB: {
-        titulo: "FIM DA HISTÓRIA!",
-        historia: "Você concluiu o caminho da investigação. Antes de compartilhar informações, é importante verificar se elas são verdadeiras.",
-        opcoes: []
     }
-};
+];
