@@ -7,14 +7,16 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 const tituloResultado = document.querySelector(".titulo-resultado");
 const botaoJogarNovamente = document.querySelector(".novamente-btn");
+const botaoCreditos = document.querySelector(".creditos-btn");
 const telaInicial = document.querySelector(".tela-inicial");
+const telaCreditos = document.querySelector(".tela-creditos");
+const botaoVoltarInicio = document.querySelector(".voltar-inicio-btn");
 const telaComoJogar = document.getElementById("tela-como-jogar");
-const telaCreditos = document.getElementById("tela-creditos");
+const botaoCreditosMenu = document.getElementById("botao-creditos");
 const telaJogo = document.getElementById("tela-jogo");
 
 const botaoIniciar = document.querySelector(".iniciar-btn");
 const botaoComoJogar = document.getElementById("botao-como-jogar");
-const botaoCreditos = document.getElementById("botao-creditos");
 const botoesVoltar = document.querySelectorAll(".botao-voltar");
 
 let atual = 0;
@@ -32,6 +34,8 @@ function mostrarTela(telaEscolhida) {
 
 botaoIniciar.addEventListener("click", iniciaJogo);
 botaoJogarNovamente.addEventListener("click", reiniciaJogo);
+botaoCreditos.addEventListener("click", mostraCreditos);
+botaoVoltarInicio.addEventListener("click", reiniciaJogo);
 
 function iniciaJogo() {
     reiniciaJogo();
@@ -57,6 +61,9 @@ function reiniciaJogo() {
     caixaPerguntas.style.display = "none";
     caixaAlternativas.style.display = "none";
     caixaResultado.style.display = "none";
+    telaCreditos.style.display = "none";
+    botaoCreditos.style.display = "none";
+    botaoJogarNovamente.style.display = "inline-block";
 }
 
 function mostraPergunta() {
@@ -133,6 +140,9 @@ function mostraGameOver(mensagem) {
     textoResultado.textContent =
         mensagem + "\n\nSuas escolhas nesta tentativa:\n" + historiaFinal;
     botaoJogarNovamente.textContent = "Recomeçar do início";
+    botaoJogarNovamente.style.display = "inline-block";
+    botaoCreditos.style.display = "none";
+    telaCreditos.style.display = "none";
 }
 
 function mostraVitoria(mensagem) {
@@ -148,11 +158,29 @@ function mostraVitoria(mensagem) {
     tituloResultado.textContent = "THE END";
     textoResultado.textContent =
         mensagem + "\n\nSeu percurso nesta partida:\n" + historiaFinal;
-    botaoJogarNovamente.textContent = "Jogar novamente";
+    botaoJogarNovamente.style.display = "none";
+    botaoCreditos.style.display = "inline-block";
+    telaCreditos.style.display = "none";
+}
+
+function mostraCreditos() {
+    if (faseDaPartida !== "vitoria") {
+        return;
+    }
+
+    faseDaPartida = "creditos";
+    telaInicial.style.display = "none";
+    caixaPerguntas.style.display = "none";
+    caixaAlternativas.style.display = "none";
+    caixaResultado.style.display = "none";
+    telaCreditos.style.display = "block";
 }
 
 botaoComoJogar.addEventListener("click", () => mostrarTela(telaComoJogar));
-botaoCreditos.addEventListener("click", () => mostrarTela(telaCreditos));
+botaoCreditosMenu.addEventListener("click", () => {
+    mostrarTela(telaCreditos);
+    telaCreditos.style.display = "block";
+});
 
 botoesVoltar.forEach(botao => {
     botao.addEventListener("click", () => mostrarTela(telaInicial));

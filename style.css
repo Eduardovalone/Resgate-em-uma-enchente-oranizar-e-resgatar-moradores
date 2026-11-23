@@ -213,6 +213,22 @@ button:hover {
     margin-top: 15px;
 }
 
+.creditos-btn {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.tela-creditos {
+    display: none;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.tela-creditos p {
+    margin: 12px 0;
+}
+
 #mensagem {
     margin-top: 18px;
     padding: 14px;
