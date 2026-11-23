@@ -125,6 +125,39 @@ button:hover {
     margin-top: 0;
 }
 
+.campo-nickname {
+    margin-top: 20px;
+}
+
+.campo-nickname label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #135d83;
+}
+
+.campo-nickname input {
+    width: 100%;
+    border: 2px solid #d5e8f1;
+    border-radius: 10px;
+    padding: 13px 15px;
+    font-size: 16px;
+    color: #183344;
+}
+
+.campo-nickname input:focus {
+    outline: none;
+    border-color: #1681b5;
+    box-shadow: 0 0 0 3px #dff3ff;
+}
+
+.erro-nickname {
+    min-height: 20px;
+    margin: 6px 0 0;
+    color: #a93226;
+    font-size: 14px;
+}
+
 .aviso ul {
     margin: 10px 0 0 20px;
     line-height: 1.7;

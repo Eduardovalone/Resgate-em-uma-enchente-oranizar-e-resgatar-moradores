@@ -1,5 +1,5 @@
 import { perguntas } from "./perguntas.js";
-import { aleatorio, nome } from "./aleatorio.js";
+import { aleatorio } from "./aleatorio.js";
 
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
@@ -18,11 +18,14 @@ const telaJogo = document.getElementById("tela-jogo");
 const botaoIniciar = document.querySelector(".iniciar-btn");
 const botaoComoJogar = document.getElementById("botao-como-jogar");
 const botoesVoltar = document.querySelectorAll(".botao-voltar");
+const campoNickname = document.getElementById("nickname");
+const erroNickname = document.getElementById("erro-nickname");
 
 let atual = 0;
 let historiaFinal = "";
 let faseDaPartida = "inicio";
 let posicaoAlternativaAvancada = 0;
+let nickname = "";
 
 function mostrarTela(telaEscolhida) {
     [telaInicial, telaComoJogar, telaCreditos, telaJogo].forEach(tela => {
@@ -37,8 +40,26 @@ botaoIniciar.addEventListener("click", iniciaJogo);
 botaoJogarNovamente.addEventListener("click", reiniciaJogo);
 botaoCreditos.addEventListener("click", mostraCreditos);
 botaoVoltarInicio.addEventListener("click", reiniciaJogo);
+campoNickname.addEventListener("input", () => {
+    if (campoNickname.value.trim()) {
+        erroNickname.textContent = "";
+    }
+});
+campoNickname.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        iniciaJogo();
+    }
+});
 
 function iniciaJogo() {
+    nickname = campoNickname.value.trim();
+    if (!nickname) {
+        erroNickname.textContent = "Digite seu apelido para iniciar.";
+        campoNickname.focus();
+        return;
+    }
+
+    erroNickname.textContent = "";
     reiniciaJogo();
     faseDaPartida = "jogando";
     telaInicial.style.display = "none";
@@ -76,7 +97,7 @@ function mostraPergunta() {
         return;
     }
 
-    caixaPerguntas.textContent = perguntaAtual.enunciado.replace(/você/gi, nome);
+    caixaPerguntas.textContent = perguntaAtual.enunciado.replace(/você/gi, nickname);
     caixaAlternativas.replaceChildren();
 
     const alternativasOrdenadas = [...perguntaAtual.alternativas];
@@ -154,7 +175,8 @@ function mostraGameOver(mensagem) {
     caixaResultado.style.display = "block";
     tituloResultado.textContent = "GAME OVER";
     textoResultado.textContent =
-        mensagem + "\n\nSuas escolhas nesta tentativa:\n" + historiaFinal;
+        mensagem + "\n\nJogador: " + nickname +
+        "\n\nSuas escolhas nesta tentativa:\n" + historiaFinal;
     botaoJogarNovamente.textContent = "Recomeçar do início";
     botaoJogarNovamente.style.display = "inline-block";
     botaoCreditos.style.display = "none";
@@ -173,7 +195,8 @@ function mostraVitoria(mensagem) {
     caixaResultado.style.display = "block";
     tituloResultado.textContent = "THE END";
     textoResultado.textContent =
-        mensagem + "\n\nSeu percurso nesta partida:\n" + historiaFinal;
+        mensagem + "\n\nJogador: " + nickname +
+        "\n\nSeu percurso nesta partida:\n" + historiaFinal;
     botaoJogarNovamente.style.display = "none";
     botaoCreditos.style.display = "inline-block";
     telaCreditos.style.display = "none";
