@@ -1,12 +1,16 @@
 import { perguntas } from "./perguntas.js";
-import { aleatorio } from "./aleatorio.js";
+import { aleatorio, nome } from "./aleatorio.js";
 
-const telaInicial = document.getElementById("tela-inicial");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+const telaInicial = document.querySelector(".tela-inicial");
 const telaComoJogar = document.getElementById("tela-como-jogar");
 const telaCreditos = document.getElementById("tela-creditos");
 const telaJogo = document.getElementById("tela-jogo");
 
-const botaoIniciar = document.getElementById("botao-iniciar");
+const botaoIniciar = document.querySelector(".iniciar-btn");
 const botaoComoJogar = document.getElementById("botao-como-jogar");
 const botaoCreditos = document.getElementById("botao-creditos");
 const botoesVoltar = document.querySelectorAll(".botao-voltar");
@@ -15,61 +19,84 @@ let atual = 0;
 let historiaFinal = "";
 
 function mostrarTela(telaEscolhida) {
-    [
-        telaInicial,
-        telaComoJogar,
-        telaCreditos,
-        telaJogo
-    ].forEach(tela => tela.classList.add("escondido"));
+    [telaInicial, telaComoJogar, telaCreditos, telaJogo].forEach(tela => {
+        tela.classList.add("escondido");
+        tela.style.display = "";
+    });
 
     telaEscolhida.classList.remove("escondido");
 }
 
+botaoIniciar.addEventListener("click", iniciaJogo);
+
 function iniciaJogo() {
     atual = 0;
     historiaFinal = "";
-    mostrarTela(telaJogo);
+
+    telaInicial.style.display = "none";
+    telaJogo.classList.remove("escondido");
+    telaJogo.style.display = "block";
+    caixaResultado.style.display = "none";
+    textoResultado.textContent = "";
+    caixaPerguntas.style.display = "block";
+    caixaAlternativas.style.display = "flex";
+
     mostraPergunta();
 }
 
 function mostraPergunta() {
-    const pergunta = perguntas[atual];
-    document.getElementById("texto-pergunta").textContent =
-        pergunta.enunciado;
+    const perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado.replace(/você/gi, nome);
+    caixaAlternativas.replaceChildren();
 
-    const areaAlternativas = document.getElementById("alternativas");
-    areaAlternativas.replaceChildren();
+    if (perguntaAtual.pausa === true) {
+        return;
+    }
 
-    pergunta.alternativas.forEach(opcao => {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botao = document.createElement("button");
         botao.className = "alternativa";
-        botao.textContent = opcao.texto;
-        botao.disabled = opcao.disponivel === false;
-
-        if (!botao.disabled) {
-            botao.addEventListener("click", () => respostaSelecionada(opcao));
-        }
-
-        areaAlternativas.appendChild(botao);
-    });
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    if (opcaoSelecionada.disponivel === false) return;
-
-    const afirmacao = aleatorio(opcaoSelecionada.afirmacao);
-    historiaFinal += afirmacao + " ";
-
-    if (opcaoSelecionada.proxima !== undefined) {
-        atual = opcaoSelecionada.proxima;
-        mostraPergunta();
+        botao.textContent = alternativa.texto;
+        botao.disabled = alternativa.disponivel === false;
+        botao.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botao);
     }
 }
 
-botaoIniciar.addEventListener("click", iniciaJogo);
+function respostaSelecionada(opcaoSelecionada) {
+    if (opcaoSelecionada.disponivel === false) {
+        return;
+    }
+
+    const destino = opcaoSelecionada.proxima;
+
+    if (!Number.isInteger(destino) || perguntas[destino] === undefined) {
+        console.error("Destino inválido:", destino);
+        return;
+    }
+
+    const origem = perguntas[atual];
+    const chegada = perguntas[destino];
+
+    if (atual !== 0 && origem.caminho !== chegada.caminho) {
+        console.error("A troca de caminho será implementada na Parte 4.");
+        return;
+    }
+
+    const afirmacao = aleatorio(opcaoSelecionada.afirmacao);
+    historiaFinal += afirmacao + " ";
+    atual = destino;
+    mostraPergunta();
+}
+
 botaoComoJogar.addEventListener("click", () => mostrarTela(telaComoJogar));
 botaoCreditos.addEventListener("click", () => mostrarTela(telaCreditos));
 
 botoesVoltar.forEach(botao => {
     botao.addEventListener("click", () => mostrarTela(telaInicial));
 });
+
+telaInicial.style.display = "block";
+caixaPerguntas.style.display = "none";
+caixaAlternativas.style.display = "none";
+caixaResultado.style.display = "none";

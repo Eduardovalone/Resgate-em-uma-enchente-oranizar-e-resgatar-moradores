@@ -1,12 +1,9 @@
 const nomes = [
-    "Alex", "Lia", "Ravi", "Bia", "Noah",
-    "Duda", "Caio", "Maya", "Theo", "Julia"
+    "Ana", "Fernanda", "Marcelo", "Amanda", "Gabriel"
 ];
 
 export function aleatorio(lista) {
     return lista[Math.floor(Math.random() * lista.length)];
 }
 
-export function nome() {
-    return aleatorio(nomes);
-}
+export const nome = aleatorio(nomes);

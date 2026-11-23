@@ -194,6 +194,16 @@ button:hover {
     border-color: #d5e8f1;
 }
 
+.caixa-alternativas {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.caixa-alternativas button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 #mensagem {
     margin-top: 18px;
     padding: 14px;

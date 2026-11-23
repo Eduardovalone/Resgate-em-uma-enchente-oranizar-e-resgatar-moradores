@@ -18,7 +18,7 @@
         </header>
 
         <!-- TELA INICIAL -->
-        <section id="tela-inicial" class="painel">
+        <section id="tela-inicial" class="painel tela-inicial">
 
             <div class="ilustracao">🏫 💻 ✨</div>
 
@@ -42,7 +42,7 @@
             </p>
 
             <div class="opcoes-menu">
-                <button id="botao-iniciar">INICIAR JOGO</button>
+                <button id="botao-iniciar" class="iniciar-btn">INICIAR JOGO</button>
                 <button id="botao-como-jogar">COMO JOGAR</button>
                 <button id="botao-creditos">CRÉDITOS</button>
             </div>
@@ -86,9 +86,12 @@
 
         <!-- TELA DO JOGO -->
         <section id="tela-jogo" class="painel escondido">
-            <h2 id="texto-pergunta"></h2>
+            <h2 id="texto-pergunta" class="caixa-perguntas"></h2>
 
-            <div id="alternativas"></div>
+            <div id="alternativas" class="caixa-alternativas"></div>
+            <div class="caixa-resultado" style="display: none;">
+                <p class="texto-resultado"></p>
+            </div>
         </section>
 
         <footer>
