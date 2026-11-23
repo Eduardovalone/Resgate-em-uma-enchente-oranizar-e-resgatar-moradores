@@ -204,6 +204,15 @@ button:hover {
     cursor: not-allowed;
 }
 
+.texto-resultado {
+    white-space: pre-line;
+}
+
+.novamente-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
 #mensagem {
     margin-top: 18px;
     padding: 14px;

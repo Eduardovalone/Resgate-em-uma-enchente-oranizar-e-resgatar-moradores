@@ -103,7 +103,10 @@ export const perguntas = [
                 texto: "Inventar uma fonte e apresentá-la como verdadeira.",
                 afirmacao: ["Inventou uma fonte para sustentar a resposta."],
                 tipo: "gameover",
-                disponivel: false
+                disponivel: true,
+                mensagem:
+                    "A fonte inventada foi identificada e o trabalho foi " +
+                    "invalidado. Você falhou na missão e precisa recomeçar."
             }
         ]
     },
@@ -156,7 +159,10 @@ export const perguntas = [
                 texto: "Publicar dados pessoais dos colegas sem autorização.",
                 afirmacao: ["Expôs dados pessoais dos colegas sem autorização."],
                 tipo: "gameover",
-                disponivel: false
+                disponivel: true,
+                mensagem:
+                    "A divulgação expôs os colegas e seu projeto foi suspenso. " +
+                    "Você falhou na missão e precisa recomeçar."
             }
         ]
     },
@@ -209,7 +215,10 @@ export const perguntas = [
                 texto: "Acusar publicamente um colega sem qualquer prova.",
                 afirmacao: ["Acusou um colega publicamente sem provas."],
                 tipo: "gameover",
-                disponivel: false
+                disponivel: true,
+                mensagem:
+                    "A acusação sem provas prejudicou um colega e interrompeu a " +
+                    "investigação. Você falhou na missão e precisa recomeçar."
             }
         ]
     },
@@ -262,7 +271,10 @@ export const perguntas = [
                 texto: "Criar outro áudio falso e divulgá-lo como verdadeiro.",
                 afirmacao: ["Criou e divulgou outro áudio falso como verdadeiro."],
                 tipo: "gameover",
-                disponivel: false
+                disponivel: true,
+                mensagem:
+                    "O novo áudio falso causou mais desinformação e a campanha " +
+                    "foi interrompida. Você falhou na missão e precisa recomeçar."
             }
         ]
     },
@@ -288,7 +300,11 @@ export const perguntas = [
                 texto: "Expor conversas privadas de moradores sem autorização.",
                 afirmacao: ["Expôs conversas privadas de moradores sem autorização."],
                 tipo: "gameover",
-                disponivel: false
+                disponivel: true,
+                mensagem:
+                    "A exposição das conversas privadas encerrou sua " +
+                    "participação na campanha. Você falhou na missão e precisa " +
+                    "recomeçar."
             }
         ]
     },

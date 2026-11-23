@@ -61,9 +61,9 @@
                 <ul>
                     <li>Clique em “Iniciar Jogo” para ver a primeira pergunta.</li>
                     <li>Na primeira pergunta, escolha como a história começa.</li>
-                    <li>Nas perguntas seguintes, use as opções ativas para avançar ou retornar.</li>
-                    <li>Algumas escolhas estão reservadas para as próximas partes do projeto.</li>
-                    <li>O jogo para no ponto de continuidade de cada narrativa.</li>
+                    <li>Nas perguntas seguintes, suas escolhas podem avançar, retornar ou mudar de narrativa.</li>
+                    <li>Algumas decisões encerram a tentativa; nesse caso, recomece do início.</li>
+                    <li>O jogo para no ponto de continuidade, antes da conclusão da história.</li>
                 </ul>
             </div>
             <button class="botao-voltar">VOLTAR AO MENU</button>
@@ -89,8 +89,10 @@
             <h2 id="texto-pergunta" class="caixa-perguntas"></h2>
 
             <div id="alternativas" class="caixa-alternativas"></div>
-            <div class="caixa-resultado" style="display: none;">
+            <div class="caixa-resultado resultado">
+                <h2 class="titulo-resultado"></h2>
                 <p class="texto-resultado"></p>
+                <button class="novamente-btn">Recomeçar do início</button>
             </div>
         </section>
 

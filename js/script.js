@@ -5,6 +5,8 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
+const tituloResultado = document.querySelector(".titulo-resultado");
+const botaoJogarNovamente = document.querySelector(".novamente-btn");
 const telaInicial = document.querySelector(".tela-inicial");
 const telaComoJogar = document.getElementById("tela-como-jogar");
 const telaCreditos = document.getElementById("tela-creditos");
@@ -17,6 +19,7 @@ const botoesVoltar = document.querySelectorAll(".botao-voltar");
 
 let atual = 0;
 let historiaFinal = "";
+let faseDaPartida = "inicio";
 
 function mostrarTela(telaEscolhida) {
     [telaInicial, telaComoJogar, telaCreditos, telaJogo].forEach(tela => {
@@ -28,20 +31,32 @@ function mostrarTela(telaEscolhida) {
 }
 
 botaoIniciar.addEventListener("click", iniciaJogo);
+botaoJogarNovamente.addEventListener("click", reiniciaJogo);
 
 function iniciaJogo() {
-    atual = 0;
-    historiaFinal = "";
-
+    reiniciaJogo();
+    faseDaPartida = "jogando";
     telaInicial.style.display = "none";
     telaJogo.classList.remove("escondido");
     telaJogo.style.display = "block";
-    caixaResultado.style.display = "none";
-    textoResultado.textContent = "";
     caixaPerguntas.style.display = "block";
     caixaAlternativas.style.display = "flex";
-
     mostraPergunta();
+}
+
+function reiniciaJogo() {
+    atual = 0;
+    historiaFinal = "";
+    faseDaPartida = "inicio";
+    caixaPerguntas.textContent = "";
+    caixaAlternativas.replaceChildren();
+    tituloResultado.textContent = "";
+    textoResultado.textContent = "";
+    telaInicial.style.display = "block";
+    telaJogo.style.display = "none";
+    caixaPerguntas.style.display = "none";
+    caixaAlternativas.style.display = "none";
+    caixaResultado.style.display = "none";
 }
 
 function mostraPergunta() {
@@ -64,7 +79,18 @@ function mostraPergunta() {
 }
 
 function respostaSelecionada(opcaoSelecionada) {
+    if (faseDaPartida !== "jogando") {
+        return;
+    }
+
     if (opcaoSelecionada.disponivel === false) {
+        return;
+    }
+
+    if (opcaoSelecionada.tipo === "gameover") {
+        const afirmacao = aleatorio(opcaoSelecionada.afirmacao);
+        historiaFinal += afirmacao + " ";
+        mostraGameOver(opcaoSelecionada.mensagem);
         return;
     }
 
@@ -95,6 +121,18 @@ function respostaSelecionada(opcaoSelecionada) {
     mostraPergunta();
 }
 
+function mostraGameOver(mensagem) {
+    faseDaPartida = "gameover";
+    caixaPerguntas.style.display = "none";
+    caixaAlternativas.replaceChildren();
+    caixaAlternativas.style.display = "none";
+    caixaResultado.style.display = "block";
+    tituloResultado.textContent = "GAME OVER";
+    textoResultado.textContent =
+        mensagem + "\n\nSuas escolhas nesta tentativa:\n" + historiaFinal;
+    botaoJogarNovamente.textContent = "Recomeçar do início";
+}
+
 botaoComoJogar.addEventListener("click", () => mostrarTela(telaComoJogar));
 botaoCreditos.addEventListener("click", () => mostrarTela(telaCreditos));
 
@@ -102,7 +140,4 @@ botoesVoltar.forEach(botao => {
     botao.addEventListener("click", () => mostrarTela(telaInicial));
 });
 
-telaInicial.style.display = "block";
-caixaPerguntas.style.display = "none";
-caixaAlternativas.style.display = "none";
-caixaResultado.style.display = "none";
+reiniciaJogo();
