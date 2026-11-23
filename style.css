@@ -189,6 +189,11 @@ button:hover {
     transform: none;
 }
 
+.alternativa:disabled:hover {
+    background: #f0f7fa;
+    border-color: #d5e8f1;
+}
+
 #mensagem {
     margin-top: 18px;
     padding: 14px;

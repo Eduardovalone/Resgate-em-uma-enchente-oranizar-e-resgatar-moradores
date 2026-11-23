@@ -1,89 +1,75 @@
-import { perguntas } from "./Js/perguntas.js";
+import { perguntas } from "./perguntas.js";
+import { aleatorio } from "./aleatorio.js";
 
-// ELEMENTOS DA PÁGINA
 const telaInicial = document.getElementById("tela-inicial");
 const telaComoJogar = document.getElementById("tela-como-jogar");
 const telaCreditos = document.getElementById("tela-creditos");
 const telaJogo = document.getElementById("tela-jogo");
-const telaFinal = document.getElementById("tela-final");
 
 const botaoIniciar = document.getElementById("botao-iniciar");
 const botaoComoJogar = document.getElementById("botao-como-jogar");
 const botaoCreditos = document.getElementById("botao-creditos");
-const botaoReiniciar = document.getElementById("botao-reiniciar");
 const botoesVoltar = document.querySelectorAll(".botao-voltar");
 
 let atual = 0;
 let historiaFinal = "";
 
-function aleatorio(lista) {
-    return lista[Math.floor(Math.random() * lista.length)];
-}
-
-// MOSTRAR UMA TELA
 function mostrarTela(telaEscolhida) {
     [
         telaInicial,
         telaComoJogar,
         telaCreditos,
-        telaJogo,
-        telaFinal
+        telaJogo
     ].forEach(tela => tela.classList.add("escondido"));
 
     telaEscolhida.classList.remove("escondido");
 }
 
-// INICIAR A MISSÃO
-function iniciarJogo() {
+function iniciaJogo() {
     atual = 0;
     historiaFinal = "";
     mostrarTela(telaJogo);
-    mostrarPergunta();
+    mostraPergunta();
 }
 
-// MOSTRAR A PERGUNTA
-function mostrarPergunta() {
+function mostraPergunta() {
+    const pergunta = perguntas[atual];
     document.getElementById("texto-pergunta").textContent =
-        perguntas[atual].enunciado;
+        pergunta.enunciado;
 
     const areaAlternativas = document.getElementById("alternativas");
     areaAlternativas.replaceChildren();
 
-    perguntas[atual].alternativas.forEach(opcao => {
+    pergunta.alternativas.forEach(opcao => {
         const botao = document.createElement("button");
         botao.className = "alternativa";
         botao.textContent = opcao.texto;
-        botao.addEventListener("click", () => respostaSelecionada(opcao));
+        botao.disabled = opcao.disponivel === false;
+
+        if (!botao.disabled) {
+            botao.addEventListener("click", () => respostaSelecionada(opcao));
+        }
+
         areaAlternativas.appendChild(botao);
     });
 }
 
 function respostaSelecionada(opcaoSelecionada) {
+    if (opcaoSelecionada.disponivel === false) return;
+
     const afirmacao = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacao + " ";
 
     if (opcaoSelecionada.proxima !== undefined) {
         atual = opcaoSelecionada.proxima;
-        mostrarPergunta();
+        mostraPergunta();
     }
 }
 
-// REINICIAR O JOGO
-function reiniciarJogo() {
-    atual = 0;
-    historiaFinal = "";
-    mostrarTela(telaInicial);
-}
-
-// EVENTOS DOS BOTÕES
-botaoIniciar.addEventListener("click", iniciarJogo);
-
+botaoIniciar.addEventListener("click", iniciaJogo);
 botaoComoJogar.addEventListener("click", () => mostrarTela(telaComoJogar));
-
 botaoCreditos.addEventListener("click", () => mostrarTela(telaCreditos));
 
 botoesVoltar.forEach(botao => {
     botao.addEventListener("click", () => mostrarTela(telaInicial));
 });
-
-botaoReiniciar.addEventListener("click", reiniciarJogo);

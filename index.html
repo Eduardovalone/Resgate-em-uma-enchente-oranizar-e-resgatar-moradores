@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dois caminhos para a história</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="Js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
 </head>
 <body>
 
@@ -53,15 +53,17 @@
         <section id="tela-como-jogar" class="painel escondido">
             <h2>Como jogar</h2>
             <p>
-                Leia a pergunta e escolha uma das alternativas. Sua escolha
-                determina qual caminho da história será apresentado.
+                Escolha alternativas para avançar ou retornar na narrativa.
+                Algumas opções ficam desativadas nesta etapa do projeto.
             </p>
             <div class="aviso">
                 <strong>Como funciona:</strong>
                 <ul>
                     <li>Clique em “Iniciar Jogo” para ver a primeira pergunta.</li>
-                    <li>Escolha uma alternativa para iniciar um dos caminhos.</li>
-                    <li>O início da narrativa escolhida aparecerá na tela.</li>
+                    <li>Na primeira pergunta, escolha como a história começa.</li>
+                    <li>Nas perguntas seguintes, use as opções ativas para avançar ou retornar.</li>
+                    <li>Algumas escolhas estão reservadas para as próximas partes do projeto.</li>
+                    <li>O jogo para no ponto de continuidade de cada narrativa.</li>
                 </ul>
             </div>
             <button class="botao-voltar">VOLTAR AO MENU</button>
@@ -87,26 +89,6 @@
             <h2 id="texto-pergunta"></h2>
 
             <div id="alternativas"></div>
-        </section>
-
-        <!-- TELA FINAL -->
-        <section id="tela-final" class="painel escondido">
-
-            <div class="ilustracao">✨ 📖</div>
-
-            <h2>HISTÓRIA CONCLUÍDA!</h2>
-
-            <h3 id="titulo-final"></h3>
-
-            <p id="historia-final"></p>
-
-            <div class="resultado">
-                <p><strong>Seu resultado:</strong></p>
-                <h2 id="resultado-final"></h2>
-            </div>
-
-            <button id="botao-reiniciar">JOGAR NOVAMENTE</button>
-
         </section>
 
         <footer>
