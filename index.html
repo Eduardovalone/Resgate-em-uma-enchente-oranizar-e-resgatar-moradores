@@ -3,43 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missão Resgate - Enchente</title>
+    <title>Dois caminhos para a história</title>
     <link rel="stylesheet" href="style.css">
-    <script src="Js/script.js" defer></script>
+    <script type="module" src="Js/script.js"></script>
 </head>
 <body>
 
     <main class="container">
 
         <header class="cabecalho">
-            <span class="etiqueta">JOGO EDUCATIVO</span>
-            <h1>🌧️ Missão Resgate 🛟</h1>
-            <p>Uma missão de organização e segurança durante uma enchente.</p>
+            <span class="etiqueta">PROJETO ESCOLAR</span>
+            <h1>Dois caminhos para a história</h1>
+            <p>Uma narrativa interativa sobre inteligência artificial.</p>
         </header>
 
         <!-- TELA INICIAL -->
         <section id="tela-inicial" class="painel">
 
-            <div class="ilustracao">🌧️ 🏘️ 🛟</div>
+            <div class="ilustracao">🏫 💻 ✨</div>
 
-            <h2>O bairro precisa de ajuda!</h2>
+            <h2>Uma descoberta inesperada</h2>
 
             <p>
-                Uma forte enchente atingiu a região. Os moradores precisam
-                de orientação e as equipes de emergência precisam de apoio
-                para organizar o atendimento.
+                Ao sair da escola, você descobre uma nova ferramenta de
+                inteligência artificial. Suas escolhas vão definir como
+                essa história começa.
             </p>
 
             <div class="aviso">
-                <strong>Objetivo da missão:</strong>
-                tomar decisões responsáveis, compartilhar informações
-                confiáveis e ajudar a organizar o atendimento aos moradores.
+                <strong>Objetivo:</strong>
+                escolha como o personagem vai reagir à inteligência artificial
+                e acompanhe o início da narrativa.
             </div>
 
             <p class="seguranca">
-                Atenção: nunca entre em áreas alagadas para tentar realizar
-                um resgate. Procure um local seguro e acione as equipes
-                de emergência.
+                Leia as alternativas com atenção. Sua escolha determina
+                qual caminho da história será apresentado.
             </p>
 
             <div class="opcoes-menu">
@@ -54,73 +53,48 @@
         <section id="tela-como-jogar" class="painel escondido">
             <h2>Como jogar</h2>
             <p>
-                Leia cada situação e escolha a atitude mais segura para
-                ajudar os moradores durante a enchente.
+                Leia a pergunta e escolha uma das alternativas. Sua escolha
+                determina qual caminho da história será apresentado.
             </p>
             <div class="aviso">
-                <strong>Regras da missão:</strong>
+                <strong>Como funciona:</strong>
                 <ul>
-                    <li>Escolha uma das alternativas em cada etapa.</li>
-                    <li>Leia a explicação após responder e avance para a próxima etapa.</li>
-                    <li>Cada resposta correta vale 10 pontos. São 6 etapas, com até 60 pontos.</li>
+                    <li>Clique em “Iniciar Jogo” para ver a primeira pergunta.</li>
+                    <li>Escolha uma alternativa para iniciar um dos caminhos.</li>
+                    <li>O início da narrativa escolhida aparecerá na tela.</li>
                 </ul>
             </div>
-            <p class="seguranca">
-                Segurança em primeiro lugar: nunca entre em áreas alagadas.
-                Procure um local seguro e siga as orientações das equipes de emergência.
-            </p>
             <button class="botao-voltar">VOLTAR AO MENU</button>
         </section>
 
         <!-- TELA DE CRÉDITOS -->
         <section id="tela-creditos" class="painel escondido">
             <h2>Créditos</h2>
-            <p><strong>Missão Resgate</strong> é um jogo educativo sobre prevenção, organização comunitária e segurança em enchentes.</p>
+            <p><strong>Dois caminhos para a história</strong> é um jogo educativo sobre inteligência artificial.</p>
             <div class="aviso">
                 <p><strong>Autores:</strong> Eduardo Valone e Guilherme Borges</p>
                 <p><strong>Turma:</strong> 3°L</p>
-                <p><strong>Objetivo:</strong> incentivar decisões seguras e o compartilhamento de informações confiáveis em situações de enchente.</p>
+                <p><strong>Objetivo:</strong> explorar diferentes formas de reagir a uma ferramenta de inteligência artificial.</p>
             </div>
             <p class="seguranca">
-                Este jogo tem finalidade educativa e não substitui as orientações
-                oficiais das equipes de emergência.
+                Projeto da disciplina Matemática II — Programação.
             </p>
             <button class="botao-voltar">VOLTAR AO MENU</button>
         </section>
 
         <!-- TELA DO JOGO -->
         <section id="tela-jogo" class="painel escondido">
-
-            <div class="informacoes">
-                <span>🧑‍🚒 Agente: <strong id="nome-agente"></strong></span>
-                <span>⭐ Pontos: <strong id="pontuacao">0</strong></span>
-                <span>📍 Etapa: <strong id="etapa-atual">1</strong>/6</span>
-            </div>
-
-            <div class="barra-fundo">
-                <div id="barra-progresso"></div>
-            </div>
-
-            <span class="etiqueta" id="tipo-pergunta">SITUAÇÃO</span>
-
             <h2 id="texto-pergunta"></h2>
 
             <div id="alternativas"></div>
-
-            <p id="mensagem" aria-live="polite"></p>
-
-            <button id="botao-proxima" class="escondido">
-                PRÓXIMA ETAPA
-            </button>
-
         </section>
 
         <!-- TELA FINAL -->
         <section id="tela-final" class="painel escondido">
 
-            <div class="ilustracao">🏆 🛟</div>
+            <div class="ilustracao">✨ 📖</div>
 
-            <h2>MISSÃO CONCLUÍDA!</h2>
+            <h2>HISTÓRIA CONCLUÍDA!</h2>
 
             <h3 id="titulo-final"></h3>
 
@@ -131,18 +105,12 @@
                 <h2 id="resultado-final"></h2>
             </div>
 
-            <p class="seguranca">
-                Lembre-se: não atravesse ruas alagadas e não tente realizar
-                resgates entrando na água. Siga as orientações oficiais.
-            </p>
-
             <button id="botao-reiniciar">JOGAR NOVAMENTE</button>
 
         </section>
 
         <footer>
-            Projeto escolar — Prevenção, organização comunitária
-            e segurança em enchentes.
+            Projeto escolar — Matemática II, Programação, 3º ano do Ensino Médio.
         </footer>
 
     </main>

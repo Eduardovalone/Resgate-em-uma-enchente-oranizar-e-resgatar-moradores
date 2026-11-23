@@ -1,4 +1,43 @@
 export const perguntas = [
+    // POSIÇÃO 0: pergunta comum aos dois caminhos.
+    {
+        enunciado:
+            "Ao sair da escola, você descobre uma inteligência " +
+            "artificial capaz de criar textos, imagens e vozes. " +
+            "Qual é sua primeira reação?",
+        alternativas: [
+            {
+                texto: "Quero experimentar e descobrir o que ela consegue fazer.",
+                afirmacao: [
+                    "Decidiu experimentar a inteligência artificial."
+                ],
+                proxima: 1
+            },
+            {
+                texto: "Quero entender os riscos antes de utilizar.",
+                afirmacao: [
+                    "Decidiu investigar os riscos da inteligência artificial."
+                ],
+                proxima: 2
+            }
+        ]
+    },
+    // POSIÇÃO 1: começo da narrativa de experimentação.
+    {
+        enunciado:
+            "Você decide experimentar a ferramenta. Na mesma semana, " +
+            "a professora solicita um trabalho sobre inteligência " +
+            "artificial. Como você pretende começar?",
+        alternativas: []
+    },
+    // POSIÇÃO 2: começo da narrativa de investigação.
+    {
+        enunciado:
+            "Antes de experimentar a ferramenta, você procura entender " +
+            "seus riscos. Nesse momento, recebe um áudio suspeito " +
+            "atribuído à diretora da escola. O que você pretende fazer?",
+        alternativas: []
+    },
     {
         tipo: "PRIMEIRA SITUAÇÃO",
         pergunta: "A água começou a subir nas ruas do bairro. Qual deve ser sua primeira atitude?",
