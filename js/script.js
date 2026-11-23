@@ -22,6 +22,7 @@ const botoesVoltar = document.querySelectorAll(".botao-voltar");
 let atual = 0;
 let historiaFinal = "";
 let faseDaPartida = "inicio";
+let posicaoAlternativaAvancada = 0;
 
 function mostrarTela(telaEscolhida) {
     [telaInicial, telaComoJogar, telaCreditos, telaJogo].forEach(tela => {
@@ -52,6 +53,7 @@ function reiniciaJogo() {
     atual = 0;
     historiaFinal = "";
     faseDaPartida = "inicio";
+    posicaoAlternativaAvancada = 0;
     caixaPerguntas.textContent = "";
     caixaAlternativas.replaceChildren();
     tituloResultado.textContent = "";
@@ -77,7 +79,21 @@ function mostraPergunta() {
     caixaPerguntas.textContent = perguntaAtual.enunciado.replace(/você/gi, nome);
     caixaAlternativas.replaceChildren();
 
-    for (const alternativa of perguntaAtual.alternativas) {
+    const alternativasOrdenadas = [...perguntaAtual.alternativas];
+    const indiceAvancar = alternativasOrdenadas.findIndex(
+        alternativa => alternativa.tipo === "avancar"
+    );
+
+    if (indiceAvancar !== -1) {
+        const indiceDestino = posicaoAlternativaAvancada % 2;
+        if (indiceAvancar !== indiceDestino) {
+            [alternativasOrdenadas[indiceAvancar], alternativasOrdenadas[indiceDestino]] =
+                [alternativasOrdenadas[indiceDestino], alternativasOrdenadas[indiceAvancar]];
+        }
+        posicaoAlternativaAvancada++;
+    }
+
+    for (const alternativa of alternativasOrdenadas) {
         const botao = document.createElement("button");
         botao.className = "alternativa";
         botao.textContent = alternativa.texto;
