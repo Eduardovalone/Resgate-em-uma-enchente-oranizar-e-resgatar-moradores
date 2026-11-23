@@ -49,7 +49,7 @@ export const perguntas = [
                 afirmacao: ["Decidiu investigar um áudio que circulava no bairro."],
                 tipo: "trocar",
                 proxima: 2,
-                disponivel: false
+                disponivel: true
             }
         ]
     },
@@ -77,7 +77,7 @@ export const perguntas = [
                 afirmacao: ["Levou o caso para o trabalho escolar sobre IA."],
                 tipo: "trocar",
                 proxima: 1,
-                disponivel: false
+                disponivel: true
             }
         ]
     },
@@ -130,7 +130,7 @@ export const perguntas = [
                 afirmacao: ["Decidiu colaborar com a orientação dos moradores."],
                 tipo: "trocar",
                 proxima: 8,
-                disponivel: false
+                disponivel: true
             }
         ]
     },
@@ -183,7 +183,7 @@ export const perguntas = [
                 afirmacao: ["Decidiu levar o material ao encontro dos moradores."],
                 tipo: "trocar",
                 proxima: 10,
-                disponivel: false
+                disponivel: true
             }
         ]
     },
@@ -236,7 +236,7 @@ export const perguntas = [
                 afirmacao: ["Decidiu transformar o caso em uma demonstração escolar."],
                 tipo: "trocar",
                 proxima: 4,
-                disponivel: false
+                disponivel: true
             }
         ]
     },

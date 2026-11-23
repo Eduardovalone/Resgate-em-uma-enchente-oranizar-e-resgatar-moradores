@@ -77,9 +77,15 @@ function respostaSelecionada(opcaoSelecionada) {
 
     const origem = perguntas[atual];
     const chegada = perguntas[destino];
+    const mudouDeCaminho = origem.caminho !== chegada.caminho;
 
-    if (atual !== 0 && origem.caminho !== chegada.caminho) {
-        console.error("A troca de caminho será implementada na Parte 4.");
+    if (atual !== 0 && mudouDeCaminho && opcaoSelecionada.tipo !== "trocar") {
+        console.error("Mudança de caminho sem o tipo trocar.");
+        return;
+    }
+
+    if (opcaoSelecionada.tipo === "trocar" && !mudouDeCaminho) {
+        console.error("A troca deve levar a outro caminho.");
         return;
     }
 
