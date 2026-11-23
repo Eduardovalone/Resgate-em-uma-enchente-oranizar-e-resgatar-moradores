@@ -110,6 +110,26 @@ button:hover {
     margin-top: 15px;
 }
 
+.opcoes-menu {
+    display: grid;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.opcoes-menu button,
+.botao-voltar {
+    width: 100%;
+}
+
+.opcoes-menu #botao-iniciar {
+    margin-top: 0;
+}
+
+.aviso ul {
+    margin: 10px 0 0 20px;
+    line-height: 1.7;
+}
+
 .informacoes {
     display: flex;
     justify-content: space-between;

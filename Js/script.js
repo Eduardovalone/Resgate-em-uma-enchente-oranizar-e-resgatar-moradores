@@ -144,12 +144,17 @@ const perguntas = [
 
 // ELEMENTOS DA PÁGINA
 const telaInicial = document.getElementById("tela-inicial");
+const telaComoJogar = document.getElementById("tela-como-jogar");
+const telaCreditos = document.getElementById("tela-creditos");
 const telaJogo = document.getElementById("tela-jogo");
 const telaFinal = document.getElementById("tela-final");
 
 const botaoIniciar = document.getElementById("botao-iniciar");
+const botaoComoJogar = document.getElementById("botao-como-jogar");
+const botaoCreditos = document.getElementById("botao-creditos");
 const botaoProxima = document.getElementById("botao-proxima");
 const botaoReiniciar = document.getElementById("botao-reiniciar");
+const botoesVoltar = document.querySelectorAll(".botao-voltar");
 
 let indice = 0;
 let pontos = 0;
@@ -171,9 +176,13 @@ function embaralhar(lista) {
 
 // MOSTRAR UMA TELA
 function mostrarTela(telaEscolhida) {
-    telaInicial.classList.add("escondido");
-    telaJogo.classList.add("escondido");
-    telaFinal.classList.add("escondido");
+    [
+        telaInicial,
+        telaComoJogar,
+        telaCreditos,
+        telaJogo,
+        telaFinal
+    ].forEach(tela => tela.classList.add("escondido"));
 
     telaEscolhida.classList.remove("escondido");
 }
@@ -333,6 +342,14 @@ function reiniciarJogo() {
 
 // EVENTOS DOS BOTÕES
 botaoIniciar.addEventListener("click", iniciarJogo);
+
+botaoComoJogar.addEventListener("click", () => mostrarTela(telaComoJogar));
+
+botaoCreditos.addEventListener("click", () => mostrarTela(telaCreditos));
+
+botoesVoltar.forEach(botao => {
+    botao.addEventListener("click", () => mostrarTela(telaInicial));
+});
 
 botaoProxima.addEventListener("click", proximaEtapa);
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Missão Resgate - Enchente</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="Js/script.js" defer></script>
 </head>
 <body>
 
@@ -42,8 +42,50 @@
                 de emergência.
             </p>
 
-            <button id="botao-iniciar">INICIAR MISSÃO</button>
+            <div class="opcoes-menu">
+                <button id="botao-iniciar">INICIAR JOGO</button>
+                <button id="botao-como-jogar">COMO JOGAR</button>
+                <button id="botao-creditos">CRÉDITOS</button>
+            </div>
 
+        </section>
+
+        <!-- TELA DE INSTRUÇÕES -->
+        <section id="tela-como-jogar" class="painel escondido">
+            <h2>Como jogar</h2>
+            <p>
+                Leia cada situação e escolha a atitude mais segura para
+                ajudar os moradores durante a enchente.
+            </p>
+            <div class="aviso">
+                <strong>Regras da missão:</strong>
+                <ul>
+                    <li>Escolha uma das alternativas em cada etapa.</li>
+                    <li>Leia a explicação após responder e avance para a próxima etapa.</li>
+                    <li>Cada resposta correta vale 10 pontos. São 6 etapas, com até 60 pontos.</li>
+                </ul>
+            </div>
+            <p class="seguranca">
+                Segurança em primeiro lugar: nunca entre em áreas alagadas.
+                Procure um local seguro e siga as orientações das equipes de emergência.
+            </p>
+            <button class="botao-voltar">VOLTAR AO MENU</button>
+        </section>
+
+        <!-- TELA DE CRÉDITOS -->
+        <section id="tela-creditos" class="painel escondido">
+            <h2>Créditos</h2>
+            <p><strong>Missão Resgate</strong> é um jogo educativo sobre prevenção, organização comunitária e segurança em enchentes.</p>
+            <div class="aviso">
+                <p><strong>Autores:</strong> Eduardo Valone e Guilherme Borges</p>
+                <p><strong>Turma:</strong> 3°L</p>
+                <p><strong>Objetivo:</strong> incentivar decisões seguras e o compartilhamento de informações confiáveis em situações de enchente.</p>
+            </div>
+            <p class="seguranca">
+                Este jogo tem finalidade educativa e não substitui as orientações
+                oficiais das equipes de emergência.
+            </p>
+            <button class="botao-voltar">VOLTAR AO MENU</button>
         </section>
 
         <!-- TELA DO JOGO -->
